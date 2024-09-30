@@ -13,7 +13,8 @@ class TextSplitter:
         Инициализация класса.
         Автоматически загружает необходимый токенизатор NLTK для работы с русским языком.
         """
-        nltk.download('punkt', quiet=True)
+        # nltk.download('punkt', quiet=True)
+        pass
 
     def split_question_context(self, input_text: str) -> Tuple[List[str], str]:
         """
