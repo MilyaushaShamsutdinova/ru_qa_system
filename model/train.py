@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 from tqdm import tqdm
-from transformers import AutoModelForQuestionAnswering, AdamW, get_scheduler
+from transformers import AutoModelForQuestionAnswering, AutoTokenizer, AdamW, get_scheduler
 from accelerate import Accelerator
 from utils import compute_metrics
 from dataset import QADataset
@@ -19,6 +19,7 @@ class QATrainer:
         self.num_epochs = num_epochs
         self.lr = lr
 
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForQuestionAnswering.from_pretrained(self.model_name)
         self.optimizer = AdamW(self.model.parameters(), lr=self.lr)
         self.scheduler = self.__create_scheduler()
