@@ -1,5 +1,6 @@
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering
 import torch
+import time
 
 
 class QAModel:
@@ -8,16 +9,17 @@ class QAModel:
     Предоставляет функционал для предсказания ответа на заданный вопрос в контексте.
     """
 
-    def __init__(self, model_dir: str):
+    def __init__(self, model_ref: str):
         """
         Инициализирует модель и токенизатор на основе предобученной модели.
 
         Аргументы:
-        model_dir (str):
-            Путь к директории с предобученной моделью и токенизатором.
+        model_ref (str):
+            Название модели на платформе Hugging Face или путь к директории
+            с предобученной моделью и токенизатором.
         """
-        self.model = AutoModelForQuestionAnswering.from_pretrained(model_dir)
-        self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
+        self.model = AutoModelForQuestionAnswering.from_pretrained(model_ref)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_ref)
 
     def predict(self, question, context):
         """

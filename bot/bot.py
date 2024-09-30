@@ -13,7 +13,7 @@ bot = telebot.TeleBot(BOT_TOKEN)
 
 # Инициализация необходимых классов и модели для получения ответа на запрос пользователя
 splitter = TextSplitter()
-qa_model = QAModel(r"trained_models\rubert-v3")
+qa_model = QAModel("milyausha2801/rubert-russian-qa-sberquad")
 
 
 def handle_input(input_text):
