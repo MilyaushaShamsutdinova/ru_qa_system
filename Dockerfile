@@ -18,7 +18,7 @@ COPY ./model/input_preprocessing.py /app/model/input_preprocessing.py
 
 RUN pip install --upgrade pip \
     && pip install -r /app/requirements.txt \
-    && pip install -e /app/code \
+    && pip install -e . \
     && python -m nltk.downloader punkt
 
 ENV PYTHONPATH=/app
