@@ -1,4 +1,4 @@
-# Русскоязычная вопросно-ответная система (Russian QA system)
+# Русскоязычная QA система обернутая в Telegram-бот
 
 ## Описание задачи
 
@@ -85,9 +85,9 @@ ru_qa_system/
 | Количество эпох    | 1            |
 
 ### Тестирование и валидация модели
-В процессе тренировки модели проводилась регулярная валидация модели на валидационном датасете по окончании каждой эпохи обучения. Ключевыми метриками для оценки качества модели были Exact Match, отражающая процент правильно предсказанных ответов, и F1-score, показывающая баланс между точностью и полнотой.
+В процессе тренировки модели проводилась регулярная валидация модели на валидационном датасете по окончании каждой эпохи обучения. Ключевыми метриками для оценки качества модели были Exact Match, отражающая процент правильно предсказанных ответов, и F1-score, показывающая баланс между точностью и полнотой. Но также немаловажную роль играет время выполнения запроса, это было оценено на практике при запуске бота.
 
-Также, можно визуально сравнить результаты работы на тренированной модели DistilBERT и RuBERT в [ноутубке](https://github.com/MilyaushaShamsutdinova/ru_qa_system/blob/main/notebooks/distilbert_vs_rubert_test.ipynb).
+Также можно визуально сравнить результаты работы на тренированной модели DistilBERT и RuBERT в [ноутубке](https://github.com/MilyaushaShamsutdinova/ru_qa_system/blob/main/notebooks/distilbert_vs_rubert_test.ipynb).
 
 ### Результаты модели
 
@@ -118,7 +118,7 @@ ru_qa_system/
 
 * **Ограниченность в понимании контекста**: Модели, основанные на поиске start/end токенов, не справляются с более сложными вопросами, требующими глубокого анализа смысла контекста.
 
-## Как запустить локально?
+## Как запустить бота локально
 
  1. Клонируйте репозиторий
     ```
@@ -139,9 +139,9 @@ ru_qa_system/
     pip install -e .
     ```
 
-4. Создайте файл .env
+4. Создайте файл `.env`
 
-    В файле .env укажите токен для бота:
+    В файле `.env` укажите токен для бота:
 
     * **BOT_TOKEN** — токен для вашего бота, который можно получить в [BotFather](https://t.me/BotFather) в Телеграме.
 
@@ -153,19 +153,19 @@ ru_qa_system/
 ## Примеры работы системы
 
 ### Контекст + один вопрос
-![alt text](assets\image_2024-09-30_21-51-44.png)
+![alt text](https://github.com/MilyaushaShamsutdinova/ru_qa_system/blob/main/assets/image_2024-09-30_21-51-44.png)
 
 ### Контекст + несколько вопросов
-![alt text](assets\image_2024-09-30_04-23-51.png)
+![alt text](https://github.com/MilyaushaShamsutdinova/ru_qa_system/blob/main/assets/image_2024-09-30_04-23-51.png)
 
 ### Только контекст
-![alt text](assets\image_2024-09-30_04-25-36.png)
+![alt text](https://github.com/MilyaushaShamsutdinova/ru_qa_system/blob/main/assets/image_2024-09-30_04-25-36.png)
 
 ### Только вопрос
-![alt text](assets\image_2024-09-30_04-26-02.png)
+![alt text](https://github.com/MilyaushaShamsutdinova/ru_qa_system/blob/main/assets/image_2024-09-30_04-26-02.png)
 
 ### Нерелевантный контекст + вопрос
-![alt text](assets\image_2024-09-30_04-27-03.png)
+![alt text](https://github.com/MilyaushaShamsutdinova/ru_qa_system/blob/main/assets/image_2024-09-30_04-27-03.png)
 
 
 ## Модель на Hugging Face
