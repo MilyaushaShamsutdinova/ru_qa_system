@@ -1,0 +1,12 @@
+services:
+  telegram_bot:
+    build: .
+    container_name: telegram_bot
+    env_file: .env  # Load environment variables from .env file
+    restart: always  # Restart the container if it stops
+    networks:
+      - bot_network
+
+networks:
+  bot_network:
+    driver: bridge
