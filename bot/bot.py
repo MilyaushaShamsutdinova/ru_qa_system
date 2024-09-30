@@ -30,7 +30,7 @@ def handle_input(input_text):
     for question in questions:
         answer = qa_model.predict(question=question, context=context)
         if not answer:
-            answer = "Я не знаю :(\nПопробуйте предоставить больше контекста."
+            answer = "Я не знаю :(\n\nПопробуйте предоставить больше релевантного контекста."
         response += f"{question}\nОтвет: {answer}\n\n"
 
     return response
