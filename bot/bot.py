@@ -9,12 +9,19 @@ load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 bot = telebot.TeleBot(BOT_TOKEN)
 splitter = TextSplitter()
-qa_model = QAModel(r"model\trained_models\rubert-v3")
+qa_model = QAModel(r"trained_models\rubert-v3")
 
 
 def handle_input(input_text):
     questions, context = splitter.split_question_context(input_text=input_text)
-    response = "Я вижу у вас много вопросов :)\n\n"
+
+    if not questions:
+        response = "Задай вопрос в одном сообщении с контекстом, пожалуйста."
+        return response
+    elif len(questions) > 1:
+        response = "Я вижу у вас много вопросов :)\n\n"
+    else:
+        response = ""
 
     if not context:
         response = "Пожалуйста, предоставьте контекст для ответа на ваш вопрос."
@@ -23,8 +30,8 @@ def handle_input(input_text):
     for question in questions:
         answer = qa_model.predict(question=question, context=context)
         if not answer:
-            answer = "Я не знаю :(\n\Попробуйте предоставить больше контекста."
-        response += f"{question}\Ответ: {answer}\n\n"
+            answer = "Я не знаю :(\nПопробуйте предоставить больше контекста."
+        response += f"{question}\nОтвет: {answer}\n\n"
 
     return response
 
