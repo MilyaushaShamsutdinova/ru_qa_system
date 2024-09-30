@@ -14,7 +14,7 @@ COPY ./bot/__init__.py /app/bot/__init__.py
 COPY ./model/__init__.py /app/model/__init__.py
 COPY ./model/inference.py /app/model/inference.py
 COPY ./model/input_preprocessing.py /app/model/input_preprocessing.py
-COPY .env /app/.env
+# COPY .env /app/.env
 
 RUN pip install --upgrade pip \
     && pip install -r /app/requirements.txt \
